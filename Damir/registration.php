@@ -1,0 +1,144 @@
+<?php
+$dbc = mysqli_connect('localhost', 'root', '', 'damir') OR DIE('Ошибка подключения к базе данных');
+if(isset($_POST['damir.customers'])){
+$user_id = mysqli_real_escape_string($dbc, trim($_POST['userid']));
+$password = mysqli_real_escape_string($dbc, trim($_POST['passid']));
+$user_name = mysqli_real_escape_string($dbc, trim($_POST['username']));
+$user_address = mysqli_real_escape_string($dbc, trim($_POST['address']));
+$user_email = mysqli_real_escape_string($dbc, trim($_POST['email']));
+
+
+if(!empty($user_id) && !empty($password) && !empty($user_name) && !empty($user_address)&& !empty($user_email)) {
+$query = "SELECT * FROM damir.customers WHERE id = '.$user_id.'";
+$data = mysqli_query($dbc, $query);
+if(mysqli_num_rows($data) == 0) {
+$query ="INSERT INTO damir.customers(userid, passid, username, address, email ) VALUES ('.$userid.','.$passid.','.$username.','.$address.','.$email.' )";
+mysqli_query($dbc,$query);
+echo 'It is OK, you may login';
+mysqli_close($dbc);
+exit();
+}
+else {
+echo 'This login already exists';
+}
+
+}
+}
+?>
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jewellery</title>
+
+    <script src="rf.js"></script>
+    <link rel="stylesheet" href="css/style1.css">
+   
+    <link rel="stylesheet" href="css/style2.css">
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<script src="rf.js"></script>
+<script src="js.js"></script>
+  </head>
+  
+  <body class="">
+  	
+    
+    <header role="banner" class="position-absolute">    
+      
+      <nav class="background-transparent background-transparent-hightlight full-width sticky">
+        <div class="s-12 l-2">
+          <a href="index.html" class="logo">
+            
+            <img class="logo-white" src="img/logo.png" alt="">
+            
+          </a>
+        </div>
+        <div class="top-nav s-12 l-10">
+          <p class="nav-text"></p>
+          <ul class="right chevron">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            
+            <li><a href="Abus.html">About us</a></li>
+            
+            <li><a href="registration.html">Profile</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    
+    
+    <main role="main">    
+      
+      <header>
+        <div class="carousel-default owl-carousel carousel-main carousel-nav-white background-dark text-center">
+          <div class="item">
+            <div class="s-12">
+              <img src="img/header.jpg" alt="">
+              <div class="carousel-content">
+                <div class="content-center-vertical line">
+                  <div class="margin-top-bottom-80">
+                    
+                    <h1 class="text-white margin-bottom-30 text-size-60 text-m-size-30 text-line-height-1">Registration<br> </h1>
+                    <div class="s-12 m-10 l-8 center"><p class="text-white text-size-14 margin-bottom-40"></p></div>
+                    <link rel='stylesheet' href='style.css' type='text/css' />
+
+</head>
+<body onload="document.registration.userid.focus();">
+<div class="navbar">
+  <a href="abus.html"></a>
+  <a href="#"></a>
+  
+  <a href="index.html" class="right"></a>
+</div>
+
+ 
+  <h2 class="header">   </h2> 
+
+<h1 class = "text"></h1>
+<form name='registration' onSubmit="return formValidation();" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+<ul>
+<p class = "text"><label for="userid">User ID:</label></p>
+<p class = "text"><input type="userid" name="userid" size="12" /></p>
+<p class = "text"><label for="passid">Password:</label></p>
+<p class = "text"><input type="password" name="passid" size="12" /></p>
+<p class = "text"><label for="username">Name:</label></p>
+<p class = "text"><input type="text" name="username" size="50" /></p>
+<p class = "text"><label for="address">Address:</label></p>
+<p class = "text"><input type="text" name="address" size="50" /></p>
+<p class = "text"><label for="email">Email:</label></p>
+<p class = "text"><input type="text" name="email" size="50" /></p>
+</select></li>
+
+
+
+
+
+
+
+<div class="line">
+                      <div class="s-12 m-12 l-3 center">
+
+
+
+
+
+<p class = "text"><input type="submit" class = "button button-white-stroke s-12" name="submit" value="Log in" /></p>
+ </div>       
+                    </div> 
+
+</ul>
+</form>
+
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>              
+        </div>               
+      </header>
